@@ -1,0 +1,28 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+               xmlns:aop="http://www.springframework.org/schema/aop"
+        xmlns:tx="http://www.springframework.org/schema/tx"
+            xmlns:jee="http://www.springframework.org/schema/jee"
+              xmlns:jpa="http://www.springframework.org/schema/data/jpa"
+                     xmlns:batch="http://www.springframework.org/schema/batch"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans 
+           http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
+           http://www.springframework.org/schema/context
+           http://www.springframework.org/schema/context/spring-context-4.0.xsd
+                   http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd
+        http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd
+                http://www.springframework.org/schema/jee http://www.springframework.org/schema/jee/spring-jee.xsd
+                    http://www.springframework.org/schema/data/jpa
+    http://www.springframework.org/schema/data/jpa/spring-jpa.xsd
+    http://www.springframework.org/schema/batch
+       http://www.springframework.org/schema/batch/spring-batch.xsd">
+         <!-- bean definitions here -->
+<context:component-scan base-package="com.smartsoft.persistence"/>
+<context:annotation-config/>
+<aop:aspectj-autoproxy/>
+<tx:annotation-driven/>
+<tx:jta-transaction-manager/>
+  <jee:jndi-lookup jndi-name="java:comp/env/persistence/batchEntityManagerFactory" id="emf" />
+<jpa:repositories base-package="com.smartsoft.persistence" entity-manager-factory-ref="entityManagerFactory" consider-nested-repositories="true"  />
+</beans>

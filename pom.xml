@@ -1,0 +1,141 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <groupId>com.smartsoft</groupId>
+  <artifactId>persistence</artifactId>
+  <version>0.0.1-SNAPSHOT</version>
+  <packaging>war</packaging>
+
+  <name>persistence</name>
+  <url>http://maven.apache.org</url>
+  <properties>
+          <logback.version>1.1.7</logback.version>
+        <slf4j.version>1.7.21</slf4j.version>
+  
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <maven.compiler.source>1.7</maven.compiler.source>
+    <maven.compiler.target>1.7</maven.compiler.target>
+    <springframework.version>4.0.4.RELEASE</springframework.version>
+  </properties>
+
+  <dependencies>
+  <dependency>
+  <groupId>org.springframework </groupId>
+  <artifactId>spring-aop</artifactId>
+  <version>${springframework.version}</version>
+  </dependency>
+<dependency>
+  <groupId>org.springframework </groupId>
+  <artifactId>spring-beans</artifactId>
+    <version>${springframework.version}</version>
+  </dependency>
+
+  <dependency>
+  <groupId>org.springframework </groupId>
+  <artifactId>spring-context</artifactId>
+    <version>${springframework.version}</version>
+  </dependency>
+    <dependency>
+  <groupId>org.springframework </groupId>
+  <artifactId>spring-core</artifactId>
+    <version>${springframework.version}</version>
+  </dependency>
+    <dependency>
+  <groupId>org.springframework </groupId>
+  <artifactId>spring-orm</artifactId>
+  <version>${springframework.version}</version>
+  </dependency>
+    <dependency>
+  <groupId>org.springframework </groupId>
+  <artifactId>spring-tx</artifactId>
+  <version>${springframework.version}</version>
+  </dependency>
+  <dependency>
+  <groupId>org.springframework </groupId>
+  <artifactId>spring-aspects </artifactId>
+    <version>${springframework.version}</version>
+  </dependency>
+    <dependency>
+    <groupId>org.springframework.data</groupId>
+    <artifactId>spring-data-commons</artifactId>
+    <version>1.8.0.RELEASE</version>
+</dependency>
+  <dependency>
+    <groupId>org.springframework.data</groupId>
+    <artifactId>spring-data-jpa</artifactId>
+    <version>1.6.0.RELEASE</version>
+</dependency>
+<dependency>
+<groupId>com.mysema.querydsl </groupId>
+<artifactId>querydsl-jpa </artifactId>
+<version>3.3.3</version>
+</dependency>
+<dependency>
+    <groupId>org.springframework.batch</groupId>
+    <artifactId>spring-batch-core</artifactId>
+    <version>3.0.1.RELEASE</version>
+</dependency>
+  <dependency>
+    <groupId>javax</groupId>
+    <artifactId>javaee-api</artifactId>
+    <version>6.0</version>
+    <scope>provided</scope>
+</dependency>
+  <dependency>
+    <groupId>org.apache.openjpa</groupId>
+    <artifactId>openjpa</artifactId>
+    <version>2.4.2</version>
+</dependency>
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-api</artifactId>
+            <version>${slf4j.version}</version>
+            <scope>compile</scope>
+        </dependency>
+        <dependency>
+            <groupId>ch.qos.logback</groupId>
+            <artifactId>logback-classic</artifactId>
+            <version>${logback.version}</version>
+            <scope>runtime</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>jcl-over-slf4j</artifactId>
+            <version>${slf4j.version}</version>
+        </dependency>
+  <dependency>
+    <groupId>org.apache.derby</groupId>
+    <artifactId>derbyclient</artifactId>
+    <version>10.14.2.0</version>
+</dependency>
+
+  </dependencies>
+
+  <build>
+  <plugins>
+              <plugin>
+        <groupId>org.apache.openjpa</groupId>
+        <artifactId>openjpa-maven-plugin</artifactId>
+        <version>3.1.2</version>
+        <configuration>
+          <excludes>com.smartsoft.persistence</excludes>
+        <includes>com.smartsofte.persistence.Person</includes> 
+        
+            <addDefaultConstructor>true</addDefaultConstructor>               
+            <enforcePropertyRestrictions>true</enforcePropertyRestrictions>
+        </configuration>
+        <executions>
+            <execution>
+                <id>enhancer</id>
+                <phase>process-classes</phase>
+                <goals>
+                    <goal>enhance</goal>
+                </goals>
+            </execution>
+        </executions>
+    </plugin>
+  </plugins>
+  
+  </build>
+</project>
